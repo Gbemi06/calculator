@@ -17,6 +17,7 @@ class Calculator {
 
   appendNumber(number) {
     if (number === "." && this.currentOperand.includes(".")) return;
+    if (number === "0" && this.currentOperand === "0") return;
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
@@ -66,17 +67,15 @@ class Calculator {
   }
 }
 
-const numberButtons = document.querySelectorAll("[data-number]");
-const operationButtons = document.querySelectorAll("[data-operation]");
-const equalsButton = document.querySelector("[data-equals]");
-const deleteButton = document.querySelector("[data-delete]");
-const allClearButton = document.querySelector("[data-all-clear]");
+const numberButtons = document.querySelectorAll(".key-number");
+const operationButtons = document.querySelectorAll(".key-operations");
+const equalsButton = document.querySelector(".key-equals");
+const deleteButton = document.querySelector(".key-delete");
+const allClearButton = document.querySelector(".key-all-clear");
 const previousOperandTextElement = document.querySelector(
-  "[data-previous-operand]"
+  ".-display__previous"
 );
-const currentOperandTextElement = document.querySelector(
-  "[data-current-operand]"
-);
+const currentOperandTextElement = document.querySelector(".-display__current");
 const calculator = new Calculator(
   previousOperandTextElement,
   currentOperandTextElement
